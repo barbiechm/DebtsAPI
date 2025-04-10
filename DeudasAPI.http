@@ -1,0 +1,6 @@
+@DeudasAPI_HostAddress = http://localhost:5110
+
+GET {{DeudasAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

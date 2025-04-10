@@ -1,0 +1,28 @@
+.vs/
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.cache
+*.vs/
+.vscode/
+*.swp
+*.pdb
+*.pyc
+*.db
+*.sqlite3
+
+# NuGet
+.nuget/
+packages/
+*.nupkg
+
+# Dependencias
+node_modules/
+
+# Configuración local
+appsettings.Development.json
+appsettings.Local.json
+
+# Build
