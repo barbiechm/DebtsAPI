@@ -12,8 +12,8 @@ builder.Services.AddSwaggerGen();
 
 
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
-Console.WriteLine(builder.Configuration.GetConnectionString("DefaultConnection"));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DATABASE_URL")));
+Console.WriteLine(builder.Configuration.GetConnectionString("DATABASE_URL"));
 
 builder.Services.AddCors(options =>
 {
