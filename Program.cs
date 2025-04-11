@@ -11,9 +11,21 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 
+var connectionString = builder.Configuration["DATABASE_URL"];
+
+// --- DEBUG (Añade esto para verificar) ---
+Console.WriteLine($"Valor leído de Configuration[\"DATABASE_URL\"]: '{connectionString}'");
+// --- FIN DEBUG ---
+
+if (string.IsNullOrEmpty(connectionString))
+{
+    Console.WriteLine("¡ERROR CRÍTICO! No se pudo obtener una cadena de conexión válida desde Configuration[\"DATABASE_URL\"].");
+    throw new InvalidOperationException("La variable de configuración 'DATABASE_URL' no se encontró o está vacía.");
+}
+
+// ... configura tu DbContext con connectionString
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DATABASE_URL")));
-Console.WriteLine(builder.Configuration.GetConnectionString("DATABASE_URL"));
+    options.UseNpgsql(connectionString));
 
 builder.Services.AddCors(options =>
 {
